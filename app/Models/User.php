@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'uuid',
+        'label'
     ];
 
     /**
@@ -42,4 +44,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function log(){
+        return $this->hasOne(Log::class);
+    }
+
+    public function iot(){
+        return $this->hasOne(Iot::class);
+    }
 }
