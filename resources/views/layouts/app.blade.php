@@ -51,24 +51,34 @@
 
                     <span>Home</span>
                 </a>
-                <a href="{{ route('video.index') }}" class="sidebar-item active" onclick="toggleActive(this)">
-                    <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
 
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 14H14V21H21V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M10 14H3V21H10V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M21 3H14V10H21V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M10 3H3V10H10V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
+                <div class="dropdown">
+                    <a class="sidebar-item active btn btn-secondary dropdown-toggle" onclick="toggleActive(this)"
+                        type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
 
-                    <span>Video </span>
-                </a>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 14H14V21H21V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M10 14H3V21H10V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 3H14V10H21V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M10 3H3V10H10V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
 
+                        <span>Video </span>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{{ route('video.otot') }}">Sistem Otot & Rangka</a></li>
+                        <li><a class="dropdown-item" href="{{ route('video.pencernaan') }}">Sistem Pencernaan</a></li>
+                        <li><a class="dropdown-item" href="{{ route('video.pernapasan') }}">Sistem Pernapasan</a></li>
+                        <li><a class="dropdown-item" href="{{ route('video.eksresi') }}">Sistem Ekstraksi</a></li>
+                    </ul>
+                </div>
 
 
             </aside>

@@ -14,6 +14,25 @@ class VideoController extends Controller
         return view('dashboard.video.index');
     }
 
+    public function getVideoOtot()
+    {
+        return view('dashboard.video.otot');
+    }
+
+    public function getVideoPencernaan()
+    {
+        return view('dashboard.video.pencernaan');
+    }
+
+    public function getVideoPernapasan()
+    {
+        return view('dashboard.video.pernapasan');
+    }
+    public function getVideoeksresi()
+    {
+        return view('dashboard.video.eksresi');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

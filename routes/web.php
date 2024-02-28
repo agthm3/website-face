@@ -31,7 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/store-modul', [HomeController::class, 'storeNewModul'])->name('store.new.modul');
     
 
-    Route::get('/video', [VideoController::class, 'index'])->name('video.index');
+    Route::get('/video/otot', [VideoController::class, 'getVideoOtot'])->name('video.otot');
+    Route::get('/video/pencernaan', [VideoController::class, 'getVideoPencernaan'])->name('video.pencernaan');
+    Route::get('/video/pernapasan', [VideoController::class, 'getVideoPernapasan'])->name('video.pernapasan');
+    Route::get('/video/ekstraksi', [VideoController::class, 'getVideoeksresi'])->name('video.eksresi');
 });
 
 require __DIR__.'/auth.php';
