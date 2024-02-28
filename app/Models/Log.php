@@ -12,4 +12,10 @@ class Log extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    public function iot(){
+        return $this->belongsTo(Iot::class);
+    }
+
+    protected $fillable = ['iot_id', 'user_id', 'status', 'created_at', 'updated_at'];
+
 }

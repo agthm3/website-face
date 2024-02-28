@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\IoTController;
+use App\Http\Controllers\IotInteractionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::post('/receive-data', [IoTController::class, 'receiveData']);
 
-Route::get('/check-update',[IoTController::class, 'checkUpdate']);
+Route::post('/iot-input', [IotInteractionController::class, 'handleIotInput']);
+Route::get('/commands', [IotInteractionController::class, 'getAllLogs']);
