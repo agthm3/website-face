@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div class="content">
         <div class="row">
             <div class="col-12">
-                <h2 class="content-title">Lab Telcom</h2>
+                <a href="{{ route('home.index') }}" class="content-title text-decoration-none mb-3">Kembali</a>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                    Your business growth
-                                                                                                                                                </h5> -->
+                                                                                                                                                                                            Your business growth
+                                                                                                                                                                                        </h5> -->
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
@@ -44,32 +45,5 @@
             </div>
         </div>
 
-        <div class="row mt-5">
-            <h3>Log Attendance</h3>
-            <div class="document-card">
-                <div class="document-item">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Lokasi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($allLog as $index => $item)
-                                <tr>
-                                    <th scope="row">{{ $index + 1 }}</th>
-                                    <td>{{ $item->user->name ?? 'N/A' }}</td>
-                                    <td>{{ $item->status }}</td>
-                                    <td>{{ $item->iot->name }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection

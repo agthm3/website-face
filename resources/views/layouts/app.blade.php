@@ -10,9 +10,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 
     <title>Smart Attendance</title>
+
 </head>
 
 <body>
@@ -33,7 +34,7 @@
 
                 <h5 class="sidebar-title">Dashboard</h5>
 
-                <a href="./index.html" class="sidebar-item active" onclick="toggleActive(this)">
+                <a href="{{ route('home.index') }}" class="sidebar-item active" onclick="toggleActive(this)">
                     <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
 
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -50,6 +51,26 @@
 
                     <span>Home</span>
                 </a>
+                <a href="{{ route('video.index') }}" class="sidebar-item active" onclick="toggleActive(this)">
+                    <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
+
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 14H14V21H21V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M10 14H3V21H10V14Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M21 3H14V10H21V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M10 3H3V10H10V3Z" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                    <span>Video </span>
+                </a>
+
+
+
             </aside>
         </div>
 
@@ -103,6 +124,8 @@
             e.closest(".sidebar-item").classList.add("active");
         }
     </script>
+
+
 </body>
 
 </html>

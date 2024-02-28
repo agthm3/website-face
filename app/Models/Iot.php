@@ -9,6 +9,11 @@ class Iot extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'mac',
+        'name'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
