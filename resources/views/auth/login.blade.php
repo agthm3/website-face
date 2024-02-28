@@ -22,6 +22,7 @@
         <div class="col-12 col-lg-3 col-navbar d-none d-xl-block">
             <aside class="sidebar">
                 <a href="#" class="sidebar-logo">
+
                     <div class="d-flex justify-content-start align-items-center">
                         <span>Smart Attendance</span>
                     </div>
@@ -48,7 +49,11 @@
                 <div class="row mt-5">
                     <h3>Login</h3>
                     <div class="document-card">
-                        <div class="document-item row">
+                        <div class="document-item row" style="justify-content:center">
+                            <img src="{{ asset('assets/img/Logo.jpg') }}" class=" " style="width:10%; "
+                                alt="">
+                            <img src="{{ asset('assets/img/unhas.png') }}" class=" " style="width:10%"
+                                alt="">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
