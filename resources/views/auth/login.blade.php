@@ -88,7 +88,7 @@
                                 <!-- Register buttons -->
                                 <div class="text-center">
                                     <p>
-                                        Not a member?
+                                        Belum punya akun?
                                         <a href="{{ route('register') }}">Register</a>
                                     </p>
 
