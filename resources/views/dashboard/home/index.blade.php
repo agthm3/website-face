@@ -6,8 +6,8 @@
             <div class="col-12">
                 <h2 class="content-title">Lab Telcom</h2>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                        Your business growth
-                                                                                                                    </h5> -->
+                                                                                                                                        Your business growth
+                                                                                                                                    </h5> -->
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
@@ -72,9 +72,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allLog as $item)
+                            @foreach ($allLog as $index => $item)
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th scope="row">{{ $index + 1 }}</th>
                                     <td>{{ $item->user->name ?? 'N/A' }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>{{ $item->iot->name }}</td>
