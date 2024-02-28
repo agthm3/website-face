@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+    Route::post('/iot-input', [IotInteractionController::class, 'handleIotInput']);
+    Route::get('/commands', [IotInteractionController::class, 'getAllLogs']);
 
-Route::post('/iot-input', [IotInteractionController::class, 'handleIotInput']);
-Route::get('/commands', [IotInteractionController::class, 'getAllLogs']);
