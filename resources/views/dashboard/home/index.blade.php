@@ -6,8 +6,8 @@
             <div class="col-12">
                 <h2 class="content-title">Lab Telcom</h2>
                 <!-- <h5 class="content-desc mb-4">
-                                    Your business growth
-                                </h5> -->
+                                                                                                                        Your business growth
+                                                                                                                    </h5> -->
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
@@ -15,7 +15,7 @@
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-column justify-content-between align-items-start">
                             <h5 class="content-desc">
-                                Label Wajah
+                                Tambah Modul Face Recognition
                             </h5>
                         </div>
 
@@ -30,7 +30,7 @@
                 <div class="statistics-card">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-column justify-content-between align-items-start">
-                            <h5 class="content-desc">RFID UUID</h5>
+                            <h5 class="content-desc">Tambah Modul RFID Reader</h5>
                         </div>
 
                         <a href="rfid-tambah.html" class="btn-statistics">
@@ -44,12 +44,15 @@
                 <div class="statistics-card">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="d-flex flex-column justify-content-between align-items-start">
-                            <h5 class="content-desc">User</h5>
+                            <h5 class="content-desc">Tambah User</h5>
                         </div>
 
-                        <button class="btn-statistics">
-                            <img src="./assets/img/global/times.svg" alt="" />
-                        </button>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button class="btn-statistics" type="submit">
+                                <img src="./assets/img/global/times.svg" alt="" />
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -69,23 +72,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @foreach ($allLog as $item)
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>{{ $item->user->name ?? 'N/A' }}</td>
+                                    <td>{{ $item->status }}</td>
+                                    <td>{{ $item->iot->name }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
