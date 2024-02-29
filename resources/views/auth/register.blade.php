@@ -32,7 +32,6 @@
                     </button>
                 </a>
 
-                <h5 class="sidebar-title">Dashboard</h5>
             </aside>
         </div>
 
@@ -47,73 +46,84 @@
 
             <div class="content">
                 <div class="row mt-5">
-                    <h3>Register</h3>
-                    <div class="document-card">
-                        <div class="document-item row" style="justify-content:center">
-                            <div class="col-6 col-md-4 col-lg-3">
-                                <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
-                                <img src="{{ asset('assets/img/unhas.png') }}" class="img-fluid" alt="Logo UNHAS">
+
+                    <div class="row" style="justify-content: center">
+                        <div class="col-lg-6">
+                            <div class="document-card">
+                                <div class="document-item row" style="justify-content:center">
+                                    <div class="col-6 col-md-4 col-lg-3">
+                                        <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
+                                        <img src="{{ asset('assets/img/unhas.png') }}" class="img-fluid"
+                                            alt="Logo UNHAS">
+                                    </div>
+                                    <div class="col-6 col-md-4 col-lg-3">
+                                        <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
+                                        <img src="{{ asset('assets/img/Logo.jpg') }}" class="img-fluid"
+                                            alt="Logo Perusahaan">
+                                    </div>
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
+                                    <form action="{{ route('register') }}" method="post">
+                                        @csrf
+                                        <!-- Email input -->
+                                        <div class="form-outline mb-1 mt-3">
+                                            <input type="text" name="name" id="form2Example1"
+                                                class="form-control" />
+                                            <label class="form-label" for="form2Example1">Name</label>
+                                        </div>
+                                        <div class="form-outline mb-1">
+                                            <input type="email" name="email" id="form2Example1"
+                                                class="form-control" />
+                                            <label class="form-label" for="form2Example1">Email address</label>
+                                        </div>
+                                        <div class="form-outline mb-1">
+                                            <input type="text" name="label" id="form2Example1"
+                                                class="form-control" />
+                                            <label class="form-label" for="form2Example1">Face Label </label>
+                                        </div>
+                                        <div class="form-outline mb-1">
+                                            <input type="text" name="uuid" id="form2Example1"
+                                                class="form-control" />
+                                            <label class="form-label" for="form2Example1">UUID</label>
+                                        </div>
+
+                                        <!-- Password input -->
+                                        <div class="form-outline mb-1">
+                                            <input type="password" name="password" id="form2Example2"
+                                                class="form-control" />
+                                            <label class="form-label" for="form2Example2">Password</label>
+                                        </div>
+                                        <div class="form-outline mb-1">
+                                            <input type="password" name="password_confirmation" id="form2Example2"
+                                                class="form-control" />
+                                            <label class="form-label" for="form2Example2">Konfirmasi Password</label>
+                                        </div>
+
+
+                                        <!-- Submit button -->
+                                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                                            Sign In
+                                        </button>
+
+                                        <!-- Register buttons -->
+                                        <div class="text-center">
+                                            <p>
+                                                Sudah punya akun?
+                                                <a href="{{ route('login') }}">Login</a>
+                                            </p>
+
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col-6 col-md-4 col-lg-3">
-                                <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
-                                <img src="{{ asset('assets/img/Logo.jpg') }}" class="img-fluid" alt="Logo Perusahaan">
-                            </div>
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
-                            <form action="{{ route('register') }}" method="post">
-                                @csrf
-                                <!-- Email input -->
-                                <div class="form-outline mb-4 mt-3">
-                                    <input type="text" name="name" id="form2Example1" class="form-control" />
-                                    <label class="form-label" for="form2Example1">Name</label>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="email" name="email" id="form2Example1" class="form-control" />
-                                    <label class="form-label" for="form2Example1">Email address</label>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="text" name="label" id="form2Example1" class="form-control" />
-                                    <label class="form-label" for="form2Example1">Face Label </label>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="text" name="uuid" id="form2Example1" class="form-control" />
-                                    <label class="form-label" for="form2Example1">UUID</label>
-                                </div>
-
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="form2Example2" class="form-control" />
-                                    <label class="form-label" for="form2Example2">Password</label>
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <input type="password" name="password_confirmation" id="form2Example2"
-                                        class="form-control" />
-                                    <label class="form-label" for="form2Example2">Konfirmasi Password</label>
-                                </div>
-
-
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-4">
-                                    Register
-                                </button>
-
-                                <!-- Register buttons -->
-                                <div class="text-center">
-                                    <p>
-                                        Sudah punya akun?
-                                        <a href="{{ route('login') }}">Login</a>
-                                    </p>
-
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@
                     </button>
                 </a>
 
-                <h5 class="sidebar-title">Dashboard</h5>
+
             </aside>
         </div>
 
@@ -46,58 +46,62 @@
             </div>
 
             <div class="content">
-                <div class="row mt-5">
-                    <h3>Login</h3>
-                    <div class="document-card">
-                        <div class="document-item row" style="justify-content:center">
-                            <div class="col-6 col-md-4 col-lg-3">
-                                <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
-                                <img src="{{ asset('assets/img/unhas.png') }}" class="img-fluid" alt="Logo UNHAS">
+                <div class="row mt-5" style="justify-content: center">
+
+                    <div class="col-lg-6">
+                        <div class="document-card">
+                            <div class="document-item row" style="justify-content:center">
+                                <div class="col-6 col-md-4 col-lg-3">
+                                    <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
+                                    <img src="{{ asset('assets/img/unhas.png') }}" class="img-fluid" alt="Logo UNHAS">
+                                </div>
+                                <div class="col-6 col-md-4 col-lg-3">
+                                    <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
+                                    <img src="{{ asset('assets/img/Logo.jpg') }}" class="img-fluid"
+                                        alt="Logo Perusahaan">
+                                </div>
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+                                <form action="{{ route('login') }}" method="post">
+
+                                    @csrf
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4 mt-3">
+                                        <input type="email" name="email" id="form2Example1" class="form-control" />
+                                        <label class="form-label" for="form2Example1">Email address</label>
+                                    </div>
+
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" name="password" id="form2Example2"
+                                            class="form-control" />
+                                        <label class="form-label" for="form2Example2">Password</label>
+                                    </div>
+
+
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-block mb-4">
+                                        Log in
+                                    </button>
+
+                                    <!-- Register buttons -->
+                                    <div class="text-center">
+                                        <p>
+                                            Belum punya akun?
+                                            <a href="{{ route('register') }}">Sign In</a>
+                                        </p>
+
+                                    </div>
+                                </form>
                             </div>
-                            <div class="col-6 col-md-4 col-lg-3">
-                                <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
-                                <img src="{{ asset('assets/img/Logo.jpg') }}" class="img-fluid" alt="Logo Perusahaan">
-                            </div>
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
-                            <form action="{{ route('login') }}" method="post">
-
-                                @csrf
-                                <!-- Email input -->
-                                <div class="form-outline mb-4 mt-3">
-                                    <input type="email" name="email" id="form2Example1" class="form-control" />
-                                    <label class="form-label" for="form2Example1">Email address</label>
-                                </div>
-
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="form2Example2" class="form-control" />
-                                    <label class="form-label" for="form2Example2">Password</label>
-                                </div>
-
-
-                                <!-- Submit button -->
-                                <button type="submit" class="btn btn-primary btn-block mb-4">
-                                    Sign in
-                                </button>
-
-                                <!-- Register buttons -->
-                                <div class="text-center">
-                                    <p>
-                                        Belum punya akun?
-                                        <a href="{{ route('register') }}">Register</a>
-                                    </p>
-
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
