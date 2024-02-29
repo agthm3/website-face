@@ -50,10 +50,14 @@
                     <h3>Login</h3>
                     <div class="document-card">
                         <div class="document-item row" style="justify-content:center">
-                            <img src="{{ asset('assets/img/Logo.jpg') }}" class=" " style="width:10%; "
-                                alt="">
-                            <img src="{{ asset('assets/img/unhas.png') }}" class=" " style="width:10%"
-                                alt="">
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
+                                <img src="{{ asset('assets/img/unhas.png') }}" class="img-fluid" alt="Logo UNHAS">
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <!-- Menggunakan kelas img-fluid untuk membuat gambar responsif -->
+                                <img src="{{ asset('assets/img/Logo.jpg') }}" class="img-fluid" alt="Logo Perusahaan">
+                            </div>
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -68,7 +72,7 @@
 
                                 @csrf
                                 <!-- Email input -->
-                                <div class="form-outline mb-4">
+                                <div class="form-outline mb-4 mt-3">
                                     <input type="email" name="email" id="form2Example1" class="form-control" />
                                     <label class="form-label" for="form2Example1">Email address</label>
                                 </div>
