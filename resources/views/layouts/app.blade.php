@@ -66,7 +66,7 @@
                     </button>
                 </a>
 
-                <h5 class="sidebar-title">Dashboard</h5>
+                <h5 class="sidebar-title"> Dashboard</h5>
 
                 <a href="{{ route('home.index') }}" class="sidebar-item active" onclick="toggleActive(this)">
                     <!-- <img src="./assets/img/global/grid.svg" alt=""> -->
