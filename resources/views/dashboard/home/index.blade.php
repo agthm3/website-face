@@ -2,13 +2,19 @@
 
 @section('content')
     <div class="content">
+        <div class="card mb-2">
+            <div class="card-body ">
+                <h6>Selamat Datang <span class="text-danger"> {{ Auth()->user()->name }}</span></h6>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <h2 class="content-title">Lab Telcom</h2>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                                                                            Your business growth
-                                                                                                                                                                                                        </h5> -->
+                                                                                                                                                                                                                                    Your business growth
+                                                                                                                                                                                                                                </h5> -->
             </div>
+
             @if (Auth()->user()->role == 'admin')
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="statistics-card">

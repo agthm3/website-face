@@ -86,7 +86,7 @@
                                 stroke-linejoin="round" />
                         </svg>
 
-                        <span>Video </span>
+                        <span>Video Pembelajaran VR </span>
                     </a>
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
