@@ -9,10 +9,10 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <h2 class="content-title">Lab Telcom</h2>
+                <h2 class="content-title"> Laboratorium Telekomunikasi Radio dan Gelombang Pendek</h2>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                                                                                                        Your business growth
-                                                                                                                                                                                                                                    </h5> -->
+                                                                                                                                                                                                                                            Your business growth
+                                                                                                                                                                                                                                        </h5> -->
             </div>
 
             @if (Auth()->user()->role == 'admin')
