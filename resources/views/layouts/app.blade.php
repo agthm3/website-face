@@ -36,7 +36,7 @@
         /* Sesuaikan ukuran logo saat ukuran layar berubah */
         @media (min-width: 992px) {
             .sidebar-logo img {
-                height: 5rem;
+                height: 3rem;
             }
 
             .sidebar-logo span {
