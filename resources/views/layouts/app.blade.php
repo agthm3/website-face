@@ -13,7 +13,37 @@
     <link rel="stylesheet" href="{{ asset('css/index.css') }}" />
 
     <title>Smart Attendance</title>
+    <style>
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
 
+        .sidebar-logo img {
+            height: 1rem;
+            /* Atur sesuai ukuran teks di sidebar */
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .sidebar-logo span {
+            font-size: 1rem;
+            /* Ukuran font teks di sidebar */
+            font-weight: bold;
+        }
+
+        /* Sesuaikan ukuran logo saat ukuran layar berubah */
+        @media (min-width: 992px) {
+            .sidebar-logo img {
+                height: 5rem;
+            }
+
+            .sidebar-logo span {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -23,9 +53,13 @@
         <div class="col-12 col-lg-3 col-navbar d-none d-xl-block">
             <aside class="sidebar">
                 <a href="#" class="sidebar-logo">
+                    <img src="{{ asset('assets/img/unhas.png') }}" alt="Logo">
+                    <img src="{{ asset('assets/img/Logo.jpg') }}" alt="Logo">
                     <div class="d-flex justify-content-start align-items-center">
                         <span>Smart Attendance</span>
                     </div>
+
+
 
                     <button id="toggle-navbar" onclick="toggleNavbar()">
                         <img src="./assets/img/global/navbar-times.svg" alt="" />
