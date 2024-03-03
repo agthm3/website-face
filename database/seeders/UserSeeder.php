@@ -21,6 +21,7 @@ class UserSeeder extends Seeder
                 'uuid' => '058521EF093100',
                 'label' => 'muka_admin',
                 'email' => 'admin@gmail.com',
+                'role' => 'admin',
                 'password' => Hash::make('adminabsensi'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

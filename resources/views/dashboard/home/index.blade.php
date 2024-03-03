@@ -6,25 +6,26 @@
             <div class="col-12">
                 <h2 class="content-title">Lab Telcom</h2>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                                                                        Your business growth
-                                                                                                                                                                                                    </h5> -->
+                                                                                                                                                                                                            Your business growth
+                                                                                                                                                                                                        </h5> -->
             </div>
+            @if (Auth()->user()->role == 'admin')
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="statistics-card">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-column justify-content-between align-items-start">
+                                <h5 class="content-desc">
+                                    Tambah Modul
+                                </h5>
+                            </div>
 
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="statistics-card">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-column justify-content-between align-items-start">
-                            <h5 class="content-desc">
-                                Tambah Modul
-                            </h5>
+                            <a href="{{ route('modul.index') }}" class="btn-statistics">
+                                <img src="./assets/img/global/times.svg" alt="" />
+                            </a>
                         </div>
-
-                        <a href="{{ route('modul.index') }}" class="btn-statistics">
-                            <img src="./assets/img/global/times.svg" alt="" />
-                        </a>
                     </div>
                 </div>
-            </div>
+            @endif
 
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="statistics-card">

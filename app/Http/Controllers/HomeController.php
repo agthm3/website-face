@@ -17,6 +17,12 @@ class HomeController extends Controller
         return view('dashboard.home.index', compact('allLog'));
     }
 
+    public function getAllRekap()
+    {
+        $succesAbsen = Log::where('status', 'success')->get();
+
+        return view('dashboard.rekap.index', compact('succesAbsen'));
+    }
     public function getAllModul()
     {
         $allModul = Iot::all();
