@@ -6,8 +6,8 @@
             <div class="col-12">
                 <h2 class="content-title">Lab Telcom</h2>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                    Your business growth
-                                                                                                                                                </h5> -->
+                                                                                                                                                                                                        Your business growth
+                                                                                                                                                                                                    </h5> -->
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
@@ -54,6 +54,7 @@
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Waktu Akses</th>
                                 <th scope="col">Lokasi</th>
                             </tr>
                         </thead>
@@ -63,9 +64,12 @@
                                     <th scope="row">{{ $index + 1 }}</th>
                                     <td>{{ $item->user->name ?? 'N/A' }}</td>
                                     <td>{{ $item->status }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->isoFormat('dddd, D MMMM Y, HH:mm:ss') }}
+                                    </td>
                                     <td>{{ $item->iot->name }}</td>
                                 </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
