@@ -20,7 +20,7 @@
             margin-bottom: 1rem;
         }
 
-        .sidebar-logo img {
+        img {
             height: 1rem;
             /* Atur sesuai ukuran teks di sidebar */
             width: auto;
@@ -35,7 +35,7 @@
 
         /* Sesuaikan ukuran logo saat ukuran layar berubah */
         @media (min-width: 992px) {
-            .sidebar-logo img {
+            img {
                 height: 3rem;
             }
 
@@ -53,8 +53,7 @@
         <div class="col-12 col-lg-3 col-navbar d-none d-xl-block">
             <aside class="sidebar">
                 <a href="#" class="sidebar-logo">
-                    <img src="{{ asset('assets/img/unhas.png') }}" alt="Logo">
-                    <img src="{{ asset('assets/img/Logo.jpg') }}" alt="Logo">
+
                     <div class="d-flex justify-content-start align-items-center">
                         <span>Smart Attendance</span>
                     </div>
@@ -65,6 +64,16 @@
                         <img src="./assets/img/global/navbar-times.svg" alt="" />
                     </button>
                 </a>
+                <div class="row">
+                    <div class="col-lg-6 d-flex justify-content-end">
+                        <!-- Menggunakan Flexbox untuk mendorong konten ke kanan -->
+                        <img src="{{ asset('assets/img/unhas.png') }}" alt="Logo" class="align-self-center">
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-start">
+                        <!-- Menggunakan Flexbox untuk mendorong konten ke kiri -->
+                        <img src="{{ asset('assets/img/Logo.jpg') }}" alt="Logo" class="align-self-center">
+                    </div>
+                </div>
 
                 <h5 class="sidebar-title"> Dashboard</h5>
 
