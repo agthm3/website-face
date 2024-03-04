@@ -25,8 +25,8 @@
             <div class="col-12">
                 <a href="{{ route('home.index') }}" class="content-title">Kembali</a>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                                                                                                                                                    Your business growth
-                                                                                                                                                                                                                                                                                </h5> -->
+                                                                                                                                                                                                                                                                                        Your business growth
+                                                                                                                                                                                                                                                                                    </h5> -->
             </div>
 
 
