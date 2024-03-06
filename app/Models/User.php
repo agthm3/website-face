@@ -52,4 +52,11 @@ class User extends Authenticatable
     public function iot(){
         return $this->hasOne(Iot::class);
     }
+    // Dalam model User
+
+    public function verificationProcesses()
+    {
+        return $this->hasMany(VerificationProcess::class);
+    }
+
 }

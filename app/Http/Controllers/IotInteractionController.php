@@ -6,41 +6,96 @@ use App\Models\Iot;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Log;
+use App\Models\VerificationProcess;
 use Carbon\Carbon;
 
 class IotInteractionController extends Controller
 {
 public function handleIotInput(Request $request)
 {
-    $mac = $request->input('mac');
-    $value = $request->input('value');
+    $mac = trim($request->input('mac'));
+    $value = trim($request->input('value'));
 
-    // Menentukan apakah input berasal dari face recognition atau RFID
+    // Menemukan perangkat IoT berdasarkan MAC address
     $iot = Iot::where('mac', $mac)->firstOrFail();
 
-    $status = 'failed'; // Status default
-    $user = null;
-
+    // Menangani input dari perangkat face recognition
     if ($iot->name == 'face_recog') {
         $user = User::where('label', $value)->first();
-    } elseif ($iot->name == 'rfid_reader') {
+
+        if ($user) {
+            // Cek apakah sudah ada proses verifikasi yang aktif atau berhasil sebelumnya
+            $existingProcess = VerificationProcess::where('user_id', $user->id)
+                                                  ->whereIn('status', ['pending', 'success'])
+                                                  ->exists();
+            if (!$existingProcess) {
+                // Jika tidak, buat proses verifikasi baru dengan status 'pending'
+                VerificationProcess::create([
+                    'user_id' => $user->id,
+                    'status' => 'pending',
+                ]);
+
+                Log::create([
+                    'iot_id' => $iot->id,
+                    'user_id' => $user->id,
+                    'status' => 'pending',
+                ]);
+
+                return response()->json(['message' => "Face recognition received. Status: pending."]);
+            } else {
+                // Proses verifikasi sudah ada, catat sebagai gagal untuk menghindari duplikasi
+                Log::create([
+                    'iot_id' => $iot->id,
+                    'user_id' => $user->id,
+                    'status' => 'failed',
+                ]);
+
+                return response()->json(['message' => "A verification process already exists for this user. Status: failed"], 400);
+            }
+        } else {
+            // User tidak ditemukan berdasarkan label face recognition
+            return response()->json(['message' => "User not found based on face recognition label. Status: failed"], 404);
+        }
+    }
+    // Menangani input dari perangkat RFID reader
+    else if ($iot->name == 'rfid_reader') {
         $user = User::where('uuid', $value)->first();
+
+        if ($user) {
+        // Cari proses verifikasi 'pending' untuk user ini
+        $verificationProcess = VerificationProcess::where('user_id', $user->id)->where('status', 'pending')->first();
+
+        if ($verificationProcess) {
+            // Update proses verifikasi menjadi 'success'
+            $verificationProcess->status = 'success';
+            $verificationProcess->save();
+            
+            Log::create([
+                'iot_id' => $iot->id,
+                'user_id' => $user->id,
+                'status' => 'success',
+            ]);
+
+            return response()->json(['message' => "RFID scan received. Verification process updated to success."]);
+        } else {
+                // Tidak ada proses 'pending' yang sesuai, catat sebagai gagal
+                Log::create([
+                    'iot_id' => $iot->id,
+                    'user_id' => $user->id,
+                    'status' => 'failed',
+                ]);
+
+                return response()->json(['message' => "No pending face recognition found for this user. Status: failed"], 400);
+            }
+        } else {
+            // User tidak ditemukan berdasarkan UUID RFID
+            return response()->json(['message' => "User not found based on RFID UUID. Status: failed"], 404);
+        }
+    } else {
+        // Tipe perangkat IoT tidak valid atau tidak dikenali
+        return response()->json(['message' => "Invalid IOT device type. Status: failed"], 400);
     }
-
-    if ($user) {
-        $status = $iot->name == 'face_recog' ? 'pending' : 'success';
-    }
-
-    // Simpan log
-    Log::create([
-        'iot_id' => $iot->id,
-        'user_id' => $user ? $user->id : null,
-        'status' => $status,
-    ]);
-
-    return response()->json(['message' => "Input received. Status: $status."]);
 }
-
 
 
 public function getAllLogs()
