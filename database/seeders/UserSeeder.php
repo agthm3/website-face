@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,5 +28,9 @@ class UserSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
         ]);
+
+        // User::factory()->count(10)->create([
+        //     ''
+        // ]);
     }
 }

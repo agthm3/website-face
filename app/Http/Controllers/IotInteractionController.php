@@ -54,6 +54,12 @@ public function handleIotInput(Request $request)
             }
         } else {
             // User tidak ditemukan berdasarkan label face recognition
+                Log::create([
+                    'iot_id' => $iot->id,
+                    'user_id' => 1,
+                    'status' => 'failed',
+                ]);
+
             return response()->json(['message' => "User not found based on face recognition label. Status: failed"], 404);
         }
     }
