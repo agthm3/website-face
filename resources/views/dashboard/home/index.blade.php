@@ -11,8 +11,8 @@
             <div class="col-12">
                 <h2 class="content-title"> Laboratorium Telekomunikasi Radio dan Gelombang Pendek</h2>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                                                                                                            Your business growth
-                                                                                                                                                                                                                                        </h5> -->
+                                                                                                                                                                                                                                                    Your business growth
+                                                                                                                                                                                                                                                </h5> -->
             </div>
 
             @if (Auth()->user()->role == 'admin')
@@ -69,7 +69,7 @@
                             @foreach ($allLog as $index => $item)
                                 <tr>
                                     <th scope="row">{{ $index + 1 }}</th>
-                                    <td>{{ $item->user->name ?? 'N/A' }}</td>
+                                    <td>{{ $item->user ? $item->user->name : 'N/A' }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->timezone('Asia/Makassar')->isoFormat('dddd, D MMMM Y, HH:mm:ss') }}
                                     </td>

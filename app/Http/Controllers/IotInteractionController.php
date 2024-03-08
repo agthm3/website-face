@@ -80,6 +80,11 @@ public function handleIotInput(Request $request)
                 }
             } else {
                 // User tidak ditemukan berdasarkan UUID RFID
+                Log::create([
+                    'iot_id' => $iot->id,
+                    'user_id' => null, // Atau Anda bisa memilih untuk tidak menyertakan user_id sama sekali.
+                    'status' => 'failed',
+                 ]);
                 return response()->json(['message' => "User not found based on RFID UUID. Status: failed"], 404);
             }
         } else {
