@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Iot;
 use App\Models\Log;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,12 +18,32 @@ class HomeController extends Controller
         return view('dashboard.home.index', compact('allLog'));
     }
 
-    public function getAllRekap()
-    {
-        $succesAbsen = Log::where('status', 'success')->get();
+    // public function getAllRekap()
+    // {
+    //     $succesAbsen = Log::where('status', 'success')->get();
 
-        return view('dashboard.rekap.index', compact('succesAbsen'));
+    //     return view('dashboard.rekap.index', compact('succesAbsen'));
+    // }
+
+    public function getAllRekap(Request $request)
+{
+    $filter = $request->query('filter', 'all');
+
+    $query = Log::where('status', 'success');
+
+    if ($filter == 'day') {
+        $query->whereDate('created_at', Carbon::today());
+    } elseif ($filter == 'week') {
+        $query->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+    } elseif ($filter == 'month') {
+        $query->whereMonth('created_at', Carbon::now()->month);
     }
+
+    $succesAbsen = $query->get();
+
+    return view('dashboard.rekap.index', compact('succesAbsen'));
+}
+
     public function getAllModul()
     {
         $allModul = Iot::all();

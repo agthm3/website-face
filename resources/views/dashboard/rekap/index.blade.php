@@ -25,18 +25,27 @@
             <div class="col-12">
                 <a href="{{ route('home.index') }}" class="content-title">Kembali</a>
                 <!-- <h5 class="content-desc mb-4">
-                                                                                                                                                                                                                                                                                        Your business growth
-                                                                                                                                                                                                                                                                                    </h5> -->
+                                                                                                                                                                                                                                                                                                    Your business growth
+                                                                                                                                                                                                                                                                                                </h5> -->
             </div>
 
 
             <div class="row mt-5">
-                <h3>Rekap Absensi</h3>
+
                 <div class="row">
+                    <div class="col-lg-2 mt-2 mb-3">
+                        <select id="timeFilter" onchange="filterTime()" class="form-control">
+                            <option value="all">Semua Waktu</option>
+                            <option value="day">Hari Ini</option>
+                            <option value="week">Minggu Ini</option>
+                            <option value="month">Bulan Ini</option>
+                        </select>
+                    </div>
                     <div class="col-lg-2 mt-2 mb-3"><button onclick="printTable()" class="btn btn-primary">Cetak Rekap
                             Absensi</button>
                     </div>
                 </div>
+
                 <div class="document-card">
                     <div class="document-item">
 
@@ -72,6 +81,11 @@
         <script>
             function printTable() {
                 window.print();
+            }
+
+            function filterTime() {
+                const filter = document.getElementById("timeFilter").value;
+                window.location.href = `{{ url('/rekap') }}?filter=${filter}`;
             }
         </script>
     @endsection
